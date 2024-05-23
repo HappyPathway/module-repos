@@ -14,3 +14,11 @@ module "tfe-workspace" {
   name = "terraform-tfe-workspace"
   github_is_private = false
 }
+
+
+module "beanstalk-environment" {
+  source  = "HappyPathway/module/tfe"
+  name = "terraform-aws-beanstalk-environment"
+  github_is_private = false
+  github_create_repo = false
+}
