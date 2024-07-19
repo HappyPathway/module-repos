@@ -22,3 +22,10 @@ module "beanstalk-environment" {
   github_is_private = false
   # github_create_repo = false
 }
+
+module "terraform-plugin-cache" {
+  source  = "HappyPathway/module/tfe"
+  name = "terraform-plugin-cache"
+  github_is_private = false
+  # github_create_repo = false
+}
