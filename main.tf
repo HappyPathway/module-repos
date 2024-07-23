@@ -23,7 +23,6 @@ module "beanstalk-environment" {
   # github_create_repo = false
 }
 
-
 # terraform-aws-pipeline-codebuild
 module "terraform-aws-pipeline-codebuild" {
   source            = "HappyPathway/module/tfe"
@@ -68,6 +67,13 @@ module "terraform-aws-pipeline-kms" {
 module "terraform-aws-pipeline-s3" {
   source            = "HappyPathway/module/tfe"
   name              = "terraform-aws-pipeline-s3"
+  github_is_private = false
+  # github_create_repo = false
+}
+
+module "terraform-plugin-cache" {
+  source            = "HappyPathway/module/tfe"
+  name              = "terraform-plugin-cache"
   github_is_private = false
   # github_create_repo = false
 }
