@@ -32,7 +32,7 @@ module "terraform-aws-pipeline-codebuild" {
 }
 
 # terraform-aws-pipeline-codecommit
-module "terraform-aws-pipeline-codebuild" {
+module "terraform-aws-pipeline-codecommit" {
   source            = "HappyPathway/module/tfe"
   name              = "terraform-aws-pipeline-codecommit"
   github_is_private = false
@@ -40,7 +40,7 @@ module "terraform-aws-pipeline-codebuild" {
 }
 
 # terraform-aws-pipeline-codepipeline
-module "terraform-aws-pipeline-codebuild" {
+module "terraform-aws-pipeline-codepipeline" {
   source            = "HappyPathway/module/tfe"
   name              = "terraform-aws-pipeline-codepipeline"
   github_is_private = false
