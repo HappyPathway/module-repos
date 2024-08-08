@@ -3,84 +3,84 @@ moved {
   to   = module.aws-image-pipeline
 }
 
-module "aws-image-pipeline" {
-  source            = "HappyPathway/module/tfe"
-  name              = "terraform-aws-image-pipeline"
-  github_is_private = false
+locals {
+  repos = [
+    "terraform-aws-release",
+    "terraform-aws-image-pipeline",
+    "terraform-tfe-workspace",
+    "terraform-aws-beanstalk-environment",
+    "terraform-aws-pipeline-codebuild",
+    "terraform-aws-pipeline-codecommit",
+    "terraform-aws-pipeline-codepipeline",
+    "terraform-aws-pipeline-iam-role",
+    "terraform-aws-pipeline-kms",
+    "terraform-aws-pipeline-s3",
+    "terraform-plugin-cache"
+  ]
 }
 
-module "tfe-workspace" {
-  source            = "HappyPathway/module/tfe"
-  name              = "terraform-tfe-workspace"
-  github_is_private = false
+moved {
+  from = module.terraform-plugin-cache
+  to   = module.module["terraform-plugin-cache"]
 }
 
-
-module "beanstalk-environment" {
-  source            = "HappyPathway/module/tfe"
-  name              = "terraform-aws-beanstalk-environment"
-  github_is_private = false
-  # github_create_repo = false
+moved {
+  from = module.terraform-aws-release
+  to   = module.module["terraform-aws-release"]
 }
 
-# terraform-aws-pipeline-codebuild
-module "terraform-aws-pipeline-codebuild" {
-  source            = "HappyPathway/module/tfe"
-  name              = "terraform-aws-pipeline-codebuild"
-  github_is_private = false
-  # github_create_repo = false
+moved {
+  from = module.aws-image-pipeline
+  to   = module.module["terraform-aws-image-pipeline"]
 }
 
-# terraform-aws-pipeline-codecommit
-module "terraform-aws-pipeline-codecommit" {
-  source            = "HappyPathway/module/tfe"
-  name              = "terraform-aws-pipeline-codecommit"
-  github_is_private = false
-  # github_create_repo = false
+moved {
+  from = module.tfe-workspace
+  to   = module.module["terraform-tfe-workspace"]
 }
 
-# terraform-aws-pipeline-codepipeline
-module "terraform-aws-pipeline-codepipeline" {
-  source            = "HappyPathway/module/tfe"
-  name              = "terraform-aws-pipeline-codepipeline"
-  github_is_private = false
-  # github_create_repo = false
+moved {
+  from = module.beanstalk-environment
+  to   = module.module["terraform-aws-beanstalk-environment"]
 }
 
-# terraform-aws-pipeline-iam-role
-module "terraform-aws-pipeline-iam-role" {
-  source            = "HappyPathway/module/tfe"
-  name              = "terraform-aws-pipeline-iam-role"
-  github_is_private = false
-  # github_create_repo = false
+moved {
+  from = module.terraform-aws-pipeline-codebuild
+  to   = module.module["terraform-aws-pipeline-codebuild"]
 }
 
-# terraform-aws-pipeline-kms
-module "terraform-aws-pipeline-kms" {
-  source            = "HappyPathway/module/tfe"
-  name              = "terraform-aws-pipeline-kms"
-  github_is_private = false
-  # github_create_repo = false
+moved {
+  from = module.terraform-aws-pipeline-codecommit
+  to   = module.module["terraform-aws-pipeline-codecommit"]
 }
 
-# terraform-aws-pipeline-s3
-module "terraform-aws-pipeline-s3" {
-  source            = "HappyPathway/module/tfe"
-  name              = "terraform-aws-pipeline-s3"
-  github_is_private = false
-  # github_create_repo = false
+moved {
+  from = module.terraform-aws-pipeline-codepipeline
+  to   = module.module["terraform-aws-pipeline-codepipeline"]
 }
 
-module "terraform-plugin-cache" {
-  source            = "HappyPathway/module/tfe"
-  name              = "terraform-plugin-cache"
-  github_is_private = false
-  # github_create_repo = false
+moved {
+  from = module.terraform-aws-pipeline-iam-role
+  to   = module.module["terraform-aws-pipeline-iam-role"]
 }
 
-module "terraform-aws-release" {
+moved {
+  from = module.terraform-aws-pipeline-kms
+  to   = module.module["terraform-aws-pipeline-kms"]
+}
+
+moved {
+  from = module.terraform-aws-pipeline-s3
+  to   = module.module["terraform-aws-pipeline-s3"]
+}
+
+module "module" {
+  for_each          = toset(local.repos)
   source            = "HappyPathway/module/tfe"
-  name              = "terraform-aws-release"
+  name              = each.value
   github_is_private = false
+  pull_request_bypassers = [
+    "/djaboxx"
+  ]
   # github_create_repo = false
 }
