@@ -77,3 +77,10 @@ module "terraform-plugin-cache" {
   github_is_private = false
   # github_create_repo = false
 }
+
+module "terraform-aws-release" {
+  source            = "HappyPathway/module/tfe"
+  name              = "terraform-aws-release"
+  github_is_private = false
+  # github_create_repo = false
+}
