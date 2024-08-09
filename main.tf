@@ -4,8 +4,8 @@ moved {
 }
 
 moved {
-  from = module.module["terraform-gh_actions-import"]
-  to = module.module["terraform-gh_actions-importer"]
+  from = module.module["terraform-gh_actions-importer"]
+  to   = module.module["terraform-importer-gh-actions"]
 }
 
 locals {
@@ -22,7 +22,7 @@ locals {
     "terraform-aws-pipeline-s3",
     "terraform-plugin-cache",
     "terraform-ghe-runner",
-    "terraform-gh_actions-importer",
+    "terraform-importer-gh-actions",
     "terraform-env-var",
     "terraform-repo-vars"
   ]
