@@ -16,7 +16,8 @@ locals {
     "terraform-aws-pipeline-kms",
     "terraform-aws-pipeline-s3",
     "terraform-plugin-cache",
-    "terraform-ghe-runner"
+    "terraform-ghe-runner",
+    "terraform-gh_actions-import"
   ]
 }
 
