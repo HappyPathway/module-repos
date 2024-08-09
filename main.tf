@@ -18,7 +18,9 @@ locals {
     "terraform-plugin-cache",
     "terraform-ghe-runner",
     "terraform-gh_actions-import",
-    "terraform-env-var"
+    "terraform-env-var",
+    "terraform-repo-secrets",
+    "terraform-repo-vars"
   ]
 }
 
