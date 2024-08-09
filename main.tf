@@ -3,6 +3,11 @@ moved {
   to   = module.aws-image-pipeline
 }
 
+moved {
+  from = module.module["terraform-gh_actions-import"]
+  to = module.module["terraform-gh_actions-importer"]
+}
+
 locals {
   repos = [
     "terraform-aws-release",
