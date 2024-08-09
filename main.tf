@@ -17,7 +17,8 @@ locals {
     "terraform-aws-pipeline-s3",
     "terraform-plugin-cache",
     "terraform-ghe-runner",
-    "terraform-gh_actions-import"
+    "terraform-gh_actions-import",
+    "terraform-env-var"
   ]
 }
 
