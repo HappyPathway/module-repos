@@ -24,7 +24,8 @@ locals {
     "terraform-ghe-runner",
     "terraform-importer-gh-actions",
     "terraform-env-var",
-    "terraform-repo-vars"
+    "terraform-repo-vars",
+    "terraform-aws-service-account
   ]
 }
 
