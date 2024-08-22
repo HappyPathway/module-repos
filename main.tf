@@ -76,7 +76,7 @@ locals {
 }
 
 module "module" {
-  for_each          = tomap({ for repo in local.repos : repo.name => repo })
+  for_each          = tomap({ for repo in local.repos : repo.repo => repo })
   source            = "HappyPathway/module/tfe"
   name              = each.value.repo
   github_is_private = false
