@@ -15,7 +15,7 @@ locals {
     "terraform-importer-gh-actions",
     "terraform-env-var",
     "terraform-repo-vars",
-    "terraform-aws-ecr-clone"
+    "terraform-aws-ecr-clone",
     "terraform-aws-service-account",
     "terraform-aws-instance"
   ]
@@ -26,7 +26,7 @@ module "module" {
   source            = "HappyPathway/module/tfe"
   name              = each.value
   github_is_private = false
-  public_module     = true
+  # public_module     = true
   pull_request_bypassers = [
     "/djaboxx"
   ]
