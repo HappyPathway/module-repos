@@ -1,13 +1,3 @@
-moved {
-  from = module.repo
-  to   = module.aws-image-pipeline
-}
-
-moved {
-  from = module.module["terraform-gh_actions-importer"]
-  to   = module.module["terraform-importer-gh-actions"]
-}
-
 locals {
   repos = [
     "terraform-aws-release",
@@ -26,6 +16,8 @@ locals {
     "terraform-env-var",
     "terraform-repo-vars",
     "terraform-aws-ecr-clone"
+    "terraform-aws-service-account",
+    "terraform-aws-instance"
   ]
 }
 
@@ -34,6 +26,7 @@ module "module" {
   source            = "HappyPathway/module/tfe"
   name              = each.value
   github_is_private = false
+  public_module     = true
   pull_request_bypassers = [
     "/djaboxx"
   ]
