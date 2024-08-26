@@ -71,6 +71,10 @@ locals {
     {
       repo          = "terraform-aws-instance",
       public_module = true,
+    },
+    {
+      repo          = "terraform-url-downloader",
+      public_module = true,
     }
   ]
 }
