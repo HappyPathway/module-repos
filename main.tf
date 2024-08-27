@@ -85,7 +85,6 @@ module "module" {
   name                = each.value.repo
   github_is_private   = false
   public_module       = each.value.public_module
-  public_organization = "HappyPathway"
   pull_request_bypassers = [
     "/djaboxx"
   ]
