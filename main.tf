@@ -80,11 +80,12 @@ locals {
 }
 
 module "module" {
-  for_each          = tomap({ for repo in local.repos : repo.repo => repo })
-  source            = "HappyPathway/module/tfe"
-  name              = each.value.repo
-  github_is_private = false
-  public_module     = each.value.public_module
+  for_each            = tomap({ for repo in local.repos : repo.repo => repo })
+  source              = "HappyPathway/module/tfe"
+  name                = each.value.repo
+  github_is_private   = false
+  public_module       = each.value.public_module
+  public_organization = "HappyPathway"
   pull_request_bypassers = [
     "/djaboxx"
   ]
