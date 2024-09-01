@@ -88,7 +88,7 @@ module "module" {
   source              = "HappyPathway/module/tfe"
   name                = each.value.repo
   github_is_private   = false
-  public_module       = each.value.public_module
+  public_module       = false # each.value.public_module
   pull_request_bypassers = [
     "/djaboxx"
   ]
