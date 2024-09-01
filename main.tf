@@ -5,6 +5,10 @@ locals {
       public_module = true,
     },
     {
+      repo          = "terraform-vault-service-account",
+      public_module = true,
+    },
+    {
       repo          = "terraform-aws-image-pipeline",
       public_module = true,
     },
