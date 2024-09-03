@@ -5,6 +5,10 @@ locals {
       public_module = true,
     },
     {
+      repo          = "terraform-aws-kms-key",
+      public_module = true,
+    },
+    {
       repo          = "terraform-vault-tfe_token",
       public_module = true,
     },
