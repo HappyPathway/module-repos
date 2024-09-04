@@ -1,4 +1,28 @@
 locals {
+  modtest_repos = [
+    {
+      repo          = "terraform-github-repo",
+      public_module = true,
+      mod_source    = "repo/github"
+      target_workspaces = [tomap({
+        workspace        = "github-repos"
+        workspace_repo   = "github-repos"
+        workspace_branch = "main"
+        repo_clone_type  = "https"
+      })]
+    },
+    {
+      repo          = "terraform-tfe-module",
+      public_module = true,
+      mod_source    = "module/tfe"
+      target_workspaces = [tomap({
+        workspace        = "repo-modules"
+        workspace_repo   = "repo-modules"
+        workspace_branch = "main"
+        repo_clone_type  = "https"
+      })]
+    }
+  ]
   repos = [
     {
       repo          = "terraform-aws-release",
@@ -71,6 +95,7 @@ locals {
     {
       repo          = "terraform-repo-vars",
       public_module = true,
+
     },
     {
       repo          = "terraform-aws-ecr-clone",
@@ -104,4 +129,24 @@ module "module" {
     email    = "git@roknsound.com"
     org      = "HappyPathway"
   }
+}
+
+
+module "modtest_repos" {
+  for_each          = tomap({ for repo in local.modtest_repos : repo.repo => repo })
+  source            = "HappyPathway/module/tfe"
+  name              = each.value.repo
+  github_is_private = false
+  pull_request_bypassers = [
+    "/djaboxx"
+  ]
+  github_actions = {
+    username = "djaboxx"
+    email    = "git@roknsound.com"
+    org      = "HappyPathway"
+  }
+  target_workspaces      = each.value.target_workspaces
+  modtest                = true
+  create_registry_module = false
+  mod_source             = each.value.mod_source
 }
