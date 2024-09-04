@@ -5,7 +5,7 @@ locals {
       public_module = true,
       mod_source    = "repo/github"
       target_workspaces = [tomap({
-        workspace        = "github-repos"
+        workspace        = "dev"
         workspace_repo   = "github-repos"
         workspace_branch = "main"
         repo_clone_type  = "https"
