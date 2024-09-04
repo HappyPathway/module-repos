@@ -22,17 +22,7 @@ locals {
         repo_clone_type  = "https"
       })]
     },
-    {
-      repo          = "terraform-aws-image-pipeline",
-      public_module = true,
-      mod_source    = "module/tfe"
-      target_workspaces = [tomap({
-        workspace        = "default"
-        workspace_repo   = "aws-image-pipeline"
-        workspace_branch = "main"
-        repo_clone_type  = "https"
-      })]
-    }
+    
   ]
   repos = [
     {
