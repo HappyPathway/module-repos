@@ -146,7 +146,7 @@ module "modtest_repos" {
   ]
   github_actions = {
     username = "djaboxx"
-    email    = "git@roknsound.com"
+    email    = "dave@roknsound.com"
     org      = "HappyPathway"
   }
   target_workspaces      = each.value.target_workspaces
