@@ -27,8 +27,8 @@ locals {
       public_module = true,
       mod_source    = "module/tfe"
       target_workspaces = [tomap({
-        workspace        = "repo-modules"
-        workspace_repo   = "repo-modules"
+        workspace        = "default"
+        workspace_repo   = "aws-image-pipeline"
         workspace_branch = "main"
         repo_clone_type  = "https"
       })]
