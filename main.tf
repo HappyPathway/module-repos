@@ -29,6 +29,10 @@ locals {
       public_module = true,
     },
     {
+      repo          = "terraform-aws-serverless-runner",
+      public_module = true,
+    },
+    {
       repo          = "terraform-aws-kms-key",
       public_module = true,
     },
