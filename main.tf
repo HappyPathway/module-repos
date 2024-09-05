@@ -22,9 +22,13 @@ locals {
         repo_clone_type  = "https"
       })]
     },
-    
+
   ]
   repos = [
+    {
+      repo          = "terraform-ls-files",
+      public_module = true
+    },
     {
       repo          = "terraform-aws-release",
       public_module = true,
