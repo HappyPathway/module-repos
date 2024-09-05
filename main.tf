@@ -135,7 +135,7 @@ module "module" {
   ]
   github_actions = {
     username = "djaboxx"
-    email    = "git@roknsound.com"
+    email    = "dave@roknsound.com"
     org      = "HappyPathway"
   }
 }
