@@ -159,3 +159,7 @@ module "modtest_repos" {
   create_registry_module = false
   mod_source             = each.value.mod_source
 }
+
+output "repos" {
+  value = [for repo in merge(module.module, module.modtest_repos) : repo.github_repo.ssh_clone_url]
+}
