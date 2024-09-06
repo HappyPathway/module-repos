@@ -1,8 +1,6 @@
 terraform {
-  backend "remote" {
-    organization = "roknsound"
-    workspaces {
-     prefix = "module-repos-"
-    }
+  backend "gcs" {
+    bucket = "hpw-terraform-state"
+    prefix = "module-repos"
   }
 }
