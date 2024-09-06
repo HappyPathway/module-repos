@@ -26,8 +26,8 @@ locals {
   ]
   repos = [
     {
-      repo          = "terraform-ls-files",
-      public_module = true
+      repo          = "terraform-ec2-ghe-runner",
+      public_module = true,
     },
     {
       repo          = "terraform-aws-release",
