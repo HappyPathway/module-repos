@@ -1,3 +1,7 @@
+variable "organization" {
+  description = "The name of the organization to create the repository in"
+}
+
 locals {
   modtest_repos = [
     {
@@ -131,6 +135,7 @@ locals {
 
 module "module" {
   for_each          = tomap({ for repo in local.repos : repo.repo => repo })
+  organization      = var.organization
   source            = "HappyPathway/module/tfe"
   name              = each.value.repo
   github_is_private = false
@@ -147,6 +152,7 @@ module "module" {
 
 module "modtest_repos" {
   for_each          = tomap({ for repo in local.modtest_repos : repo.repo => repo })
+  organization      = var.organization
   source            = "HappyPathway/module/tfe"
   name              = each.value.repo
   github_is_private = false

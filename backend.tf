@@ -2,7 +2,7 @@ terraform {
   backend "remote" {
     organization = "roknsound"
     workspaces {
-      name = "module-repos"
+     prefix = "module-repos-"
     }
   }
 }
