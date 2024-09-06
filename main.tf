@@ -30,6 +30,10 @@ locals {
       public_module = true,
     },
     {
+      repo          = "terraform-ls-files",
+      public_module = true,
+    },
+    {
       repo          = "terraform-aws-release",
       public_module = true,
     },
