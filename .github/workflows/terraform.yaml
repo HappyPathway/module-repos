@@ -61,10 +61,6 @@ jobs:
         with:
           name: ${{ needs.terraform-plan.outputs.planfile }}
           path: tf_dir/tf_plan
-    
-      - name: Terraform Init
-        run: terraform init
-        working-directory: tf_dir
           
       - name: Terraform Apply
         working-directory: tf_dir
