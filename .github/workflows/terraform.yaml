@@ -51,11 +51,11 @@ jobs:
       - uses: actions/download-artifact@master
         with:
           name: ${{ needs.terraform-plan.outputs.planfile }}
-          path: terraform.tfplan.zip
+          path: tf_plan
 
-      - name: Unarchive Planfile
-        run: unzip terraform.tfplan.zip
-        
+      - name: ls tf_plan
+        run: ls tf_plan
+
       - name: Terraform Apply
         run: |
           terraform apply -auto-approve terraform.tfplan
