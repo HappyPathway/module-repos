@@ -56,6 +56,9 @@ jobs:
         with:
           name: ${{ needs.terraform-plan.outputs.planfile }}
           path: tf_dir
+
+      - name: Fix .git owner
+        run: sudo chown runner:docker -R .git
         
       - name: Terraform Apply
         working-directory: tf_dir
