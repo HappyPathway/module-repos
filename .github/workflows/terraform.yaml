@@ -47,7 +47,12 @@ jobs:
     steps:
       - name: Terraform Init
         run: terraform init
+
+      - uses: actions/download-artifact@master
+        with:
+          name: ${{ needs.terraform-plan.outputs.planfile }}
+          path: terraform.tfplan
         
       - name: Terraform Apply
         run: |
-          terraform apply -auto-approve ${{ needs.terraform-plan.outputs.planfile }}
+          terraform apply -auto-approve terraform.tfplan
