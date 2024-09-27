@@ -58,9 +58,9 @@ jobs:
           path: tf_dir
 
       - name: Fix .git owner
-        run: sudo chown runner:docker -R .git
+        run: sudo chown runner:docker -R .
+        working-directory: tf_dir
         
       - name: Terraform Apply
         working-directory: tf_dir
-        run: |
-          terraform apply -auto-approve terraform.tfplan
+        run: terraform apply -auto-approve terraform.tfplan
