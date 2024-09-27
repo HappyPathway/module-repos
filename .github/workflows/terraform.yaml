@@ -51,18 +51,13 @@ jobs:
           terraform_version: ${{ vars.terraform_version }}
           cli_config_credentials_token: ${{ secrets.TFE_TOKEN }}
           cli_config_credentials_hostname: ${{ vars.terraform_api }}
-
-      - uses: actions/download-artifact@master
-        with:
-          name: ${{ needs.terraform-plan.outputs.planfile }}-tfdir
-          path: tf_dir
       
       - uses: actions/download-artifact@master
         with:
           name: ${{ needs.terraform-plan.outputs.planfile }}
-          path: tf_dir/tf_plan
+          path: tf_dir
         
       - name: Terraform Apply
         working-directory: tf_dir
         run: |
-          terraform apply -auto-approve tf_plan/${{ needs.terraform-plan.outputs.planfile }}
+          terraform apply -auto-approve terraform.tfplan
