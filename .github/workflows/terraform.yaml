@@ -16,7 +16,8 @@ jobs:
     secrets:
       TFE_TOKEN: ${{ secrets.TFE_TOKEN }}
       GH_TOKEN: ${{ secrets.GH_TOKEN }}
-  
+      GOOGLE_CREDENTIALS: ${{ secrets.GOOGLE_CREDENTIALS }}
+     
   terraform-plan:
     needs: terraform-validate
     uses: HappyPathway/centralized-actions/.github/workflows/terraform-plan.yaml@main
