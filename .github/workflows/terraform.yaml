@@ -61,15 +61,6 @@ jobs:
         with:
           name: ${{ needs.terraform-plan.outputs.planfile }}
           path: tf_dir/tf_plan
-
-      # ${{ env.planfile }}-lockfile
-      - uses: actions/download-artifact@master
-        with:
-          name: ${{ needs.terraform-plan.outputs.planfile }}-lockfile
-          path: tf_dir/tf_lock
-
-      - name: move lockfile
-        run: mv tf_dir/tf_lock/.terraform.lock.hcl tf_dir/.terraform.lock.hcl
         
       - name: Terraform Apply
         working-directory: tf_dir
