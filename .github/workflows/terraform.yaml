@@ -59,7 +59,7 @@ jobs:
 
       - name: terraform init
         working-directory: tf_dir
-        run: terraform init
+        run: terraform init -upgrade
         
       - name: Terraform Apply
         working-directory: tf_dir
