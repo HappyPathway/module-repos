@@ -45,9 +45,16 @@ jobs:
     environment: requires_approval
     if: github.ref == 'refs/heads/main'
     steps:
+      - name: Setup Terraform
+        uses: hashicorp/setup-terraform@v3.1.2
+        with:
+          terraform_version: ${{ vars.terraform_version }}
+          cli_config_credentials_token: ${{ secrets.TFE_TOKEN }}
+          cli_config_credentials_hostname: ${{ vars.terraform_api }}
+          
       - name: Terraform Init
         run: terraform init
-
+        
       - uses: actions/download-artifact@master
         with:
           name: ${{ needs.terraform-plan.outputs.planfile }}
