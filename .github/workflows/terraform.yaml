@@ -45,6 +45,11 @@ jobs:
     environment: requires_approval
     if: github.ref == 'refs/heads/main'
     steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ needs.terraform-plan.outputs.commit_sha }}
+          persist-credentials: false
+          
       - name: Setup Terraform
         uses: hashicorp/setup-terraform@v3.1.2
         with:
@@ -52,15 +57,8 @@ jobs:
           cli_config_credentials_token: ${{ secrets.TFE_TOKEN }}
           cli_config_credentials_hostname: ${{ vars.terraform_api }}
       
-      - uses: actions/download-artifact@master
-        with:
-          name: ${{ needs.terraform-plan.outputs.planfile }}
-          path: tf_dir
-
       - name: terraform init
-        working-directory: tf_dir
         run: terraform init -upgrade
         
       - name: Terraform Apply
-        working-directory: tf_dir
         run: terraform apply -auto-approve terraform.tfplan
