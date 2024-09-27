@@ -59,7 +59,12 @@ jobs:
         with:
           name: ${{ needs.terraform-plan.outputs.planfile }}
           path: tf_plan
+
+      - uses: actions/download-artifact@master
+        with:
+          name: ${{ needs.terraform-plan.outputs.planfile }}-tfdir
+          path: tf_dir
           
       - name: Terraform Apply
         run: |
-          terraform apply -auto-approve tf_plan/${{ needs.terraform-plan.outputs.planfile }}
+          terraform apply -auto-approve -chdir=tf_dir tf_plan/${{ needs.terraform-plan.outputs.planfile }}
