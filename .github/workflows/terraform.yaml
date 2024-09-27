@@ -19,7 +19,6 @@ jobs:
       github_username: ${{ github.actor }}
       github_email: ${{ github.actor }}@roknsound.com
       github_org: ${{ github.repository_owner }}
-      workspace: happypathway
     secrets:
       TFE_TOKEN: ${{ secrets.TFE_TOKEN }}
       GH_TOKEN: ${{ secrets.GH_TOKEN }}
