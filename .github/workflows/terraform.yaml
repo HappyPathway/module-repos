@@ -3,7 +3,12 @@ name: "Terraform"
 on:
   workflow_dispatch:
   pull_request:
-    
+
+env:
+  GITHUB_OWNER: ${{ inputs.github_org }}
+  GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
+  GOOGLE_CREDENTIALS: ${{ secrets.GOOGLE_CREDENTIALS }}
+  
 jobs:
   terraform-validate:
     uses: HappyPathway/centralized-actions/.github/workflows/terraform-test.yml@main
