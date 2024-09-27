@@ -8,6 +8,7 @@ env:
   GITHUB_OWNER: ${{ inputs.github_org }}
   GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
   GOOGLE_CREDENTIALS: ${{ secrets.GOOGLE_CREDENTIALS }}
+  TF_WORKSPACE: happypathway
   
 jobs:
   terraform-validate:
