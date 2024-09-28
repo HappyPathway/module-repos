@@ -29,7 +29,7 @@ jobs:
         if: github.ref == 'refs/heads/main'
         with:
           name: terraform_dir
-          path: ${{ github.workspace }}
+          path: .terraform
           retention-days: 1
           include-hidden-files: true
           
