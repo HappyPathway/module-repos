@@ -23,6 +23,16 @@ jobs:
           
       - name: terraform init
         run: terraform init -upgrade
+
+      - uses: actions/upload-artifact@master
+        name: Archive Configuration
+        if: github.ref == 'refs/heads/main'
+        with:
+          name: terraform_dir
+          path: ${{ github.workspace }}/.terraform
+          retention-days: 1
+          include-hidden-files: true
+          
           
   terraform-validate:
     needs: setup-terraform
@@ -35,6 +45,7 @@ jobs:
       github_org: ${{ github.repository_owner }}
       setup_terraform: false
       terraform_init: false
+      cache: ${{ github.workspace }}
     secrets:
       TFE_TOKEN: ${{ secrets.TFE_TOKEN }}
       GH_TOKEN: ${{ secrets.GH_TOKEN }}
@@ -52,6 +63,7 @@ jobs:
       workspace: happypathway
       setup_terraform: false
       terraform_init: false
+      cache: ${{ github.workspace }}
     secrets:
       TFE_TOKEN: ${{ secrets.TFE_TOKEN }}
       GH_TOKEN: ${{ secrets.GH_TOKEN }}
@@ -63,6 +75,11 @@ jobs:
     environment: requires_approval
     if: github.ref == 'refs/heads/main'
     steps:
+      - uses: actions/download-artifact@v4
+        with:
+          name: .terraform
+          path: ${{ github.workspace }}/.terraform
+
       - uses: actions/checkout@v4
         with:
           ref: ${{ needs.terraform-plan.outputs.commit_sha }}
