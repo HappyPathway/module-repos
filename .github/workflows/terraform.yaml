@@ -46,6 +46,7 @@ jobs:
       setup_terraform: false
       terraform_init: false
       cache: ${{ github.workspace }}
+      download_cache: true
     secrets:
       TFE_TOKEN: ${{ secrets.TFE_TOKEN }}
       GH_TOKEN: ${{ secrets.GH_TOKEN }}
@@ -64,6 +65,7 @@ jobs:
       setup_terraform: false
       terraform_init: false
       cache: ${{ github.workspace }}
+      download_cache: true
     secrets:
       TFE_TOKEN: ${{ secrets.TFE_TOKEN }}
       GH_TOKEN: ${{ secrets.GH_TOKEN }}
