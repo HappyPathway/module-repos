@@ -11,6 +11,18 @@ env:
   TF_WORKSPACE: happypathway
   
 jobs:
+  setup-terraform:
+    steps:
+     - name: Setup Terraform
+        uses: hashicorp/setup-terraform@v3.1.2
+        with:
+          terraform_version: ${{ vars.terraform_version }}
+          cli_config_credentials_token: ${{ secrets.TFE_TOKEN }}
+          cli_config_credentials_hostname: ${{ vars.terraform_api }}
+          
+      - name: terraform init
+        run: terraform init -upgrade
+          
   terraform-validate:
     uses: HappyPathway/centralized-actions/.github/workflows/terraform-test.yml@main
     with:
@@ -19,6 +31,8 @@ jobs:
       github_username: ${{ github.actor }}
       github_email: ${{ github.actor }}@roknsound.com
       github_org: ${{ github.repository_owner }}
+      setup_terraform: false
+      terraform_init: false
     secrets:
       TFE_TOKEN: ${{ secrets.TFE_TOKEN }}
       GH_TOKEN: ${{ secrets.GH_TOKEN }}
@@ -34,6 +48,8 @@ jobs:
       github_email: ${{ github.actor }}@roknsound.com
       github_org: ${{ github.repository_owner }} 
       workspace: happypathway
+      setup_terraform: false
+      terraform_init: false
     secrets:
       TFE_TOKEN: ${{ secrets.TFE_TOKEN }}
       GH_TOKEN: ${{ secrets.GH_TOKEN }}
@@ -49,16 +65,6 @@ jobs:
         with:
           ref: ${{ needs.terraform-plan.outputs.commit_sha }}
           persist-credentials: false
-          
-      - name: Setup Terraform
-        uses: hashicorp/setup-terraform@v3.1.2
-        with:
-          terraform_version: ${{ vars.terraform_version }}
-          cli_config_credentials_token: ${{ secrets.TFE_TOKEN }}
-          cli_config_credentials_hostname: ${{ vars.terraform_api }}
-      
-      - name: terraform init
-        run: terraform init -upgrade
         
       - name: Terraform Apply
         run: terraform apply -auto-approve
