@@ -14,6 +14,9 @@ jobs:
   setup-terraform:
     runs-on: ubuntu-latest
     steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+          
       - name: Setup Terraform
         uses: hashicorp/setup-terraform@v3.1.2
         with:
@@ -29,7 +32,7 @@ jobs:
         if: github.ref == 'refs/heads/main'
         with:
           name: terraform_dir
-          path: .
+          path: .terraform
           retention-days: 1
           include-hidden-files: true
           
