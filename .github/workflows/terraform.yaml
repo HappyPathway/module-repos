@@ -12,6 +12,7 @@ env:
   
 jobs:
   setup-terraform:
+    runs-on: ubuntu-latest
     steps:
      - name: Setup Terraform
        uses: hashicorp/setup-terraform@v3.1.2
