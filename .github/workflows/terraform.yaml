@@ -66,7 +66,7 @@ jobs:
       github_org: ${{ github.repository_owner }} 
       workspace: happypathway
       setup_terraform: false
-      terraform_init: true
+      terraform_init: false
       cache: ${{ github.workspace }}
       download_cache: true
     secrets:
