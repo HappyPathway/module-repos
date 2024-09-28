@@ -3,5 +3,5 @@ provider "github" {
 }
 
 provider "tfe" {
-  hostname = var.hostname
+  hostname = var.tfe_hostname
 }
