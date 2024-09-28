@@ -36,5 +36,5 @@ variable "repos" {
 }
 
 variable "tfe_hostname" {
-  default = "https://app.terraform.io"
+  default = "app.terraform.io"
 }
