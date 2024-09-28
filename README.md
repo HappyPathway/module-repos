@@ -32,7 +32,7 @@ No requirements.
 | <a name="input_modtest_repos"></a> [modtest\_repos](#input\_modtest\_repos) | n/a | <pre>list(object(<br>    {<br>      repo          = string,<br>      public_module = bool,<br>      mod_source    = string<br>      target_workspaces = list(object({<br>        workspace        = string<br>        workspace_repo   = string<br>        workspace_branch = optional(string, "main")<br>        repo_clone_type  = optional(string, "https")<br>      }))<br>  }))</pre> | n/a | yes |
 | <a name="input_organization"></a> [organization](#input\_organization) | The name of the organization to create the repository in | `any` | n/a | yes |
 | <a name="input_repos"></a> [repos](#input\_repos) | n/a | <pre>list(object(<br>    {<br>      repo          = string,<br>      public_module = bool<br>    }<br>  ))</pre> | n/a | yes |
-| <a name="input_tfe_hostname"></a> [tfe\_hostname](#input\_tfe\_hostname) | n/a | `string` | `"https://app.terraform.io"` | no |
+| <a name="input_tfe_hostname"></a> [tfe\_hostname](#input\_tfe\_hostname) | n/a | `string` | `"app.terraform.io"` | no |
 
 ## Outputs
 
