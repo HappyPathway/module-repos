@@ -25,6 +25,7 @@ jobs:
         run: terraform init -upgrade
           
   terraform-validate:
+    needs: setup-terraform
     uses: HappyPathway/centralized-actions/.github/workflows/terraform-test.yml@main
     with:
       terraform_version: ${{ vars.terraform_version }}
