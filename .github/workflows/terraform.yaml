@@ -11,10 +11,14 @@ env:
   
 jobs:
   setup-terraform:
+    outputs:
+      commit_sha: ${{ steps.checkout.outputs.commit }}
+        
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Code
         uses: actions/checkout@v4
+        id: checkout
           
       - name: Setup Terraform
         uses: hashicorp/setup-terraform@v3.1.2
@@ -49,6 +53,7 @@ jobs:
       terraform_init: false
       cache: ${{ github.workspace }}
       download_cache: true
+      commit_sha: needs.setup-terraform.outputs.commit_sha
     secrets:
       TFE_TOKEN: ${{ secrets.TFE_TOKEN }}
       GH_TOKEN: ${{ secrets.GH_TOKEN }}
@@ -68,6 +73,7 @@ jobs:
       terraform_init: false
       cache: ${{ github.workspace }}
       download_cache: true
+      commit_sha: needs.terraform-validate.outputs.commit_sha
     secrets:
       TFE_TOKEN: ${{ secrets.TFE_TOKEN }}
       GH_TOKEN: ${{ secrets.GH_TOKEN }}
@@ -79,15 +85,29 @@ jobs:
     environment: requires_approval
     if: github.ref == 'refs/heads/main'
     steps:
-      - uses: actions/download-artifact@v4
-        with:
-          name: terraform_dir
-          path: ${{ github.workspace }}/.terraform
-
       - uses: actions/checkout@v4
         with:
           ref: ${{ needs.terraform-plan.outputs.commit_sha }}
           persist-credentials: false
+           
+      - uses: actions/download-artifact@master
+        with:
+          name: terraform_dir
+          path: terraform_data
+
+      - name: mkdir .terraform
+        run: mkdir .terraform
+        
+      - name: set TF Data Dir
+        run: mv terraform_data/terraform_dir/* .terraform/
+
+      - name: fix file permissions
+        run: chmod -R 777 .terraform
+
+      - uses: actions/download-artifact@master
+        with:
+          name: ${{ needs.terraform-plan.outputs.planfile }}
+          path: terraform_plan
         
       - name: Terraform Apply
-        run: terraform apply -auto-approve
+        run: terraform apply -auto-approve terraform_plan/${{ needs.terraform-plan.outputs.planfile }}
