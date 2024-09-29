@@ -53,7 +53,7 @@ jobs:
       terraform_init: false
       cache: ${{ github.workspace }}
       download_cache: true
-      commit_sha: needs.setup-terraform.outputs.commit_sha
+      commit_sha: ${{ needs.setup-terraform.outputs.commit_sha }}
     secrets:
       TFE_TOKEN: ${{ secrets.TFE_TOKEN }}
       GH_TOKEN: ${{ secrets.GH_TOKEN }}
@@ -73,7 +73,7 @@ jobs:
       terraform_init: false
       cache: ${{ github.workspace }}
       download_cache: true
-      commit_sha: needs.terraform-validate.outputs.commit_sha
+      commit_sha: ${{ needs.terraform-validate.outputs.commit_sha }}
     secrets:
       TFE_TOKEN: ${{ secrets.TFE_TOKEN }}
       GH_TOKEN: ${{ secrets.GH_TOKEN }}
