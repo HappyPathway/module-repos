@@ -8,6 +8,7 @@ env:
   GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
   GOOGLE_CREDENTIALS: ${{ secrets.GOOGLE_CREDENTIALS }}
   TF_WORKSPACE: happypathway
+  TFE_TOKEN: ${{ secrets.TFE_TOKEN }}
   
 jobs:
   setup-terraform:
