@@ -99,7 +99,7 @@ jobs:
         run: mkdir .terraform
         
       - name: set TF Data Dir
-        run: mv terraform_data/terraform_dir/* .terraform/
+        run: mv terraform_data/* .terraform/
 
       - name: fix file permissions
         run: chmod -R 777 .terraform
