@@ -167,6 +167,10 @@ repos = [
   {
     repo          = "terraform-aws-config-store",
     public_module = true,
+  },
+  {
+    repo          = "terraform-aws-vpc-services",
+    public_module = true,
   }
 ]
 
