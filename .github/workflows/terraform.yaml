@@ -7,7 +7,7 @@ on:
       - main
 
 env:
-  GITHUB_OWNER: ${{ inputs.github_org }}
+  GITHUB_OWNER: ${{ vars.GH_ORG }}
   GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
   GOOGLE_CREDENTIALS: ${{ secrets.GOOGLE_CREDENTIALS }}
   TF_WORKSPACE: happypathway
