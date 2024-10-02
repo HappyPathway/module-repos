@@ -42,6 +42,15 @@ jobs:
           path: .terraform
           retention-days: 1
           include-hidden-files: true
+
+      - uses: actions/upload-artifact@master
+        name: Archive Lockfile
+        if: github.ref == 'refs/heads/main'
+        with:
+          name: terraform_lockfile
+          path: .terraform.lock.hcl
+          retention-days: 1
+          include-hidden-files: true
           
           
   terraform-validate:
