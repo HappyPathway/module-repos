@@ -171,6 +171,10 @@ repos = [
   {
     repo          = "terraform-aws-vpc-services",
     public_module = true,
+  },
+  {
+    repo          = "terraform-aws-opensearch",
+    public_module = true,
   }
 ]
 
