@@ -55,7 +55,7 @@ jobs:
           
   terraform-validate:
     needs: setup-terraform
-    uses: HappyPathway/centralized-actions/.github/workflows/terraform-test.yml@main
+    uses: HappyPathway/terraform-validate@main
     with:
       terraform_version: ${{ vars.terraform_version }}
       terraform_api: ${{ vars.terraform_api }}
@@ -74,7 +74,7 @@ jobs:
      
   terraform-plan:
     needs: terraform-validate
-    uses: HappyPathway/centralized-actions/.github/workflows/terraform-plan.yaml@main
+    uses: HappyPathway/terraform-plan@main
     with:
       terraform_version: ${{ vars.terraform_version }}
       terraform_api: ${{ vars.terraform_api }}
