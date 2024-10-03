@@ -31,7 +31,7 @@ module "module" {
   pull_request_bypassers = [
     "/djaboxx"
   ]
-  github_actions =  var.github_actions
+  github_actions = var.github_actions
 }
 
 
