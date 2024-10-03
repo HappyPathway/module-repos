@@ -31,13 +31,7 @@ module "module" {
   pull_request_bypassers = [
     "/djaboxx"
   ]
-  github_actions = merge(
-    var.github_actions,
-    {
-      tfe_token = data.google_kms_secret.secrets["tfe_token"].plaintext
-      token     = data.google_kms_secret.secrets["gh_token"].plaintext
-    }
-  )
+  github_actions =  var.github_actions
 }
 
 
