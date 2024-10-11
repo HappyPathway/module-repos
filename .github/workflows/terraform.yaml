@@ -62,7 +62,7 @@ jobs:
       github_username: ${{ github.actor }}
       github_email: ${{ github.actor }}@roknsound.com
       github_org: ${{ github.repository_owner }}
-      setup_terraform: false
+      setup_terraform: true
       terraform_init: false
       cache: ${{ github.workspace }}
       download_cache: true
@@ -82,7 +82,7 @@ jobs:
       github_email: ${{ github.actor }}@roknsound.com
       github_org: ${{ github.repository_owner }} 
       workspace: happypathway
-      setup_terraform: false
+      setup_terraform: true
       terraform_init: false
       cache: ${{ github.workspace }}
       download_cache: true
