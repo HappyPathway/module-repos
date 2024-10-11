@@ -98,6 +98,13 @@ jobs:
     environment: requires_approval
     if: github.ref == 'refs/heads/main' && needs.terraform-plan.outputs.pending_changes
     steps:
+      - name: Setup Terraform
+        uses: hashicorp/setup-terraform@v3.1.2
+        with:
+          terraform_version: ${{ vars.terraform_version }}
+          cli_config_credentials_token: ${{ secrets.TFE_TOKEN }}
+          cli_config_credentials_hostname: ${{ vars.terraform_api }}
+          
       - uses: actions/checkout@v4
         with:
           ref: ${{ needs.terraform-plan.outputs.commit_sha }}
