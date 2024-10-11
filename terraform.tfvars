@@ -175,6 +175,10 @@ repos = [
   {
     repo          = "terraform-aws-opensearch",
     public_module = true,
+  },
+  {
+    repo          = "terraform-tfe-team",
+    public_module = true,
   }
 ]
 
