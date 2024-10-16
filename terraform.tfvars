@@ -157,7 +157,7 @@ repos = [
     public_module = true,
   },
   {
-    repo          = "terraform-workspace-github-actions",
+    repo          = "terraform-github-workspace",
     public_module = true,
   },
   {
