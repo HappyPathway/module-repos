@@ -73,7 +73,7 @@ jobs:
       GOOGLE_CREDENTIALS: ${{ secrets.GOOGLE_CREDENTIALS }}
      
   terraform-plan:
-    needs: setup-terraform
+    needs: terraform-validate
     uses: HappyPathway/centralized-actions/.github/workflows/terraform-plan.yaml@main
     with:
       terraform_version: ${{ vars.terraform_version }}
@@ -96,7 +96,7 @@ jobs:
     runs-on: ubuntu-latest
     needs: terraform-plan
     environment: requires_approval
-    if: github.ref == 'refs/heads/main' && needs.terraform-plan.outputs.pending_changes
+    if: github.ref == 'refs/heads/main'
     steps:
       - name: Setup Terraform
         uses: hashicorp/setup-terraform@v3.1.2
