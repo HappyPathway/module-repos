@@ -35,6 +35,11 @@ repos = [
     repo          = "terraform-ec2-ghe-runner",
     public_module = true,
   },
+  # terraform-aws-service-catalog
+  {
+    repo          = "terraform-aws-service-catalog",
+    public_module = true,
+  },
   {
     repo          = "terraform-s3-apt-cache",
     public_module = true,
