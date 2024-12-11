@@ -41,6 +41,10 @@ repos = [
     public_module = true,
   },
   {
+    repo          = "terraform-morpheus-queue",
+    public_module = true,
+  },
+  {
     repo          = "terraform-s3-apt-cache",
     public_module = true,
   },
