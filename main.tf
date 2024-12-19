@@ -27,20 +27,20 @@ module "module" {
   organization      = var.organization
   source            = "HappyPathway/module/tfe"
   name              = each.value.repo
-  github_is_private = false
+  github_is_private = each.value.private_module_repo
   pull_request_bypassers = [
     "/djaboxx"
   ]
   github_actions = var.github_actions
+  enforce_prs    = !each.value.private_module_repo
 }
-
 
 module "modtest_repos" {
   for_each          = tomap({ for repo in var.modtest_repos : repo.repo => repo })
   organization      = var.organization
   source            = "HappyPathway/module/tfe"
   name              = each.value.repo
-  github_is_private = false
+  github_is_private = each.value.private_module_repo
   pull_request_bypassers = [
     "/djaboxx"
   ]
@@ -49,6 +49,7 @@ module "modtest_repos" {
   modtest                = true
   create_registry_module = false
   mod_source             = each.value.mod_source
+  enforce_prs            = !each.value.private_module_repo
 }
 
 output "repos" {
