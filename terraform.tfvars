@@ -40,6 +40,11 @@ repos = [
     repo          = "terraform-aws-service-catalog",
     public_module = false,
   },
+  # terraform-aws-morpheus-instance
+  {
+    repo          = "terraform-aws-morpheus-instance",
+    public_module = false,
+  },
   {
     repo          = "terraform-morpheus-queue",
     public_module = true,
