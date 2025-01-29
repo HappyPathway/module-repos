@@ -1,5 +1,8 @@
 name: "Terraform"
 
+concurrency: 
+  group: module-repos
+  
 on:
   workflow_dispatch:
   push:

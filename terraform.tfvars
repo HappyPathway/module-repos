@@ -42,7 +42,7 @@ repos = [
   },
   # terraform-aws-morpheus-instance
   {
-    repo          = "terraform-aws-morpheus-cluster",
+    repo          = "terraform-aws-cluster",
     public_module = false,
   },
   {
