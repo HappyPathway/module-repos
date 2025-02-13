@@ -31,6 +31,11 @@ modtest_repos = [
 ]
 
 repos = [
+  # terraform-aws-image-pipeline-external
+  {
+    repo          = "terraform-aws-image-pipeline-external",
+    public_module = false,
+  },
   {
     repo          = "terraform-ec2-ghe-runner",
     public_module = false,
@@ -192,7 +197,11 @@ repos = [
   {
     repo          = "terraform-tfe-team",
     public_module = false,
-  }
+  },
+  {
+    repo          = "terraform-google-sql",
+    public_module = false,
+  },
 ]
 
 private_module_repos = true
