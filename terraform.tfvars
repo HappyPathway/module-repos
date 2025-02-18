@@ -40,6 +40,10 @@ repos = [
     repo          = "terraform-ec2-ghe-runner",
     public_module = false,
   },
+  {
+    repo = "terraform-github-project"
+    public_module = false,
+  },
   # terraform-aws-service-catalog
   {
     repo          = "terraform-aws-service-catalog",
