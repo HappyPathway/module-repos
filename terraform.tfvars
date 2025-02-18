@@ -207,19 +207,19 @@ repos = [
     public_module = false,
   },
   {
-    name = "terraform-aws-efs",
+    repo = "terraform-aws-efs",
     public_module = false
   },
   {
-    name = "terraform-aws-kms",
+    repo = "terraform-aws-kms",
     public_module = false
   },
   {
-    name = "terraform-aws-rds",
+    repo = "terraform-aws-rds",
     public_module = false
   },
   {
-    name = "terraform-aws-ses",
+    repo = "terraform-aws-ses",
     public_module = false
   }
 
