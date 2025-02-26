@@ -44,7 +44,10 @@ repos = [
     repo = "terraform-github-project"
     public_module = false,
   },
-  # terraform-aws-service-catalog
+  {
+    repo = "terraform-openai-project"
+    public_module = false,
+  },
   {
     repo          = "terraform-aws-service-catalog",
     public_module = false,
