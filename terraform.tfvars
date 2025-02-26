@@ -209,6 +209,23 @@ repos = [
     repo          = "terraform-google-sql",
     public_module = false,
   },
+  {
+    repo = "terraform-aws-efs",
+    public_module = false
+  },
+  {
+    repo = "terraform-aws-kms",
+    public_module = false
+  },
+  {
+    repo = "terraform-aws-rds",
+    public_module = false
+  },
+  {
+    repo = "terraform-aws-ses",
+    public_module = false
+  }
+
 ]
 
 private_module_repos = true
