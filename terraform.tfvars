@@ -41,11 +41,11 @@ repos = [
     public_module = false,
   },
   {
-    repo = "terraform-github-project"
+    repo          = "terraform-github-project"
     public_module = false,
   },
   {
-    repo = "terraform-openai-project"
+    repo          = "terraform-openai-project"
     public_module = false,
   },
   {
@@ -67,6 +67,10 @@ repos = [
   },
   {
     repo          = "terraform-ghe-runner-container",
+    public_module = false,
+  },
+  {
+    repo          = "terraform-aws-elasticache",
     public_module = false,
   },
   {
@@ -210,19 +214,19 @@ repos = [
     public_module = false,
   },
   {
-    repo = "terraform-aws-efs",
+    repo          = "terraform-aws-efs",
     public_module = false
   },
   {
-    repo = "terraform-aws-kms",
+    repo          = "terraform-aws-kms",
     public_module = false
   },
   {
-    repo = "terraform-aws-rds",
+    repo          = "terraform-aws-rds",
     public_module = false
   },
   {
-    repo = "terraform-aws-ses",
+    repo          = "terraform-aws-ses",
     public_module = false
   }
 
